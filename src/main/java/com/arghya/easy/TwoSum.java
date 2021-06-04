@@ -1,23 +1,24 @@
 package com.arghya.easy;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TwoSum {
-    public static void main(String[] args) {
-
-    }
-
+    /**
+     * https://leetcode.com/problems/two-sum/submissions/
+     *
+     * @param nums   - array of number
+     * @param target - target sum
+     * @return index of elements where sum = target
+     */
     public int[] twoSum(int[] nums, int target) {
-        List<Integer> numsList = Arrays.stream(nums).boxed().collect(Collectors.toList());
-
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             int compliment = target - nums[i];
-            int compIndex = numsList.indexOf(compliment);
-            if (compIndex != -1 && compIndex != i) {
-                return new int[]{compIndex, i};
+            if (map.containsKey(compliment)) {
+                return new int[]{map.get(compliment), i};
             }
+            map.put(nums[i], i);
         }
         throw new IllegalArgumentException("No Sum found");
     }
