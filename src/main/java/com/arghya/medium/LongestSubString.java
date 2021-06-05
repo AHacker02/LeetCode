@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LongestSubString {
+
     public int lengthOfLongestSubstring(String s) {
         int longestSubstringLength = 0;
         for (int i = 0; i < s.length(); i++) {
